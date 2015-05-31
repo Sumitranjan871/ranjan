@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Leadtech
+ * @package    Leadtech_City
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Leadtech_City>
+            <version>0.1.0</version>
+        </Leadtech_City>
+    </modules>
+    <frontend>
+        <routers>
+            <city>
+                <use>standard</use>
+                <args>
+                    <module>Leadtech_City</module>
+                    <frontName>city</frontName>
+                </args>
+            </city>
+        </routers>
+        <layout>
+            <updates>
+                <city>
+                    <file>city.xml</file>
+                </city>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<city>
+				<use>admin</use>
+				<args>
+					<module>Leadtech_City</module>
+					<frontName>city</frontName>
+				</args>
+			</city>
+        </routers>
+    </admin>
+    <adminhtml>
+	
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Leadtech_City>
+							<title>City Module</title>
+							<sort_order>10</sort_order>
+						</Leadtech_City>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<city>
+					<file>city.xml</file>
+				</city>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <city>
+                <class>Leadtech_City_Model</class>
+                <resourceModel>city_mysql4</resourceModel>
+            </city>
+            <city_mysql4>
+                <class>Leadtech_City_Model_Mysql4</class>
+                <entities>
+                    <city>
+                        <table>city</table>
+                    </city>
+                </entities>
+            </city_mysql4>
+        </models>
+        <resources>
+            <city_setup>
+                <setup>
+                    <module>Leadtech_City</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </city_setup>
+            <city_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </city_write>
+            <city_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </city_read>
+        </resources>
+        <blocks>
+            <city>
+                <class>Leadtech_City_Block</class>
+            </city>
+        </blocks>
+        <helpers>
+            <city>
+                <class>Leadtech_City_Helper</class>
+            </city>
+        </helpers>
+    </global>
+</config>
